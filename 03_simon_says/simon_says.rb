@@ -45,18 +45,23 @@ def titleize(input)
     result = ""
     arr = []
     #make an array of little words to skip them
-    littleWords = ["and","or","the"]
+    littleWords = ["and","or","the", "over"]
     #how to capitalize first letter?
     #Split in to array
     arr = input.split
     
     #capitalize every word, except little words
     while i < arr.length do
-        arr[i] = arr[i].capitalize
-        result = arr.join " "
+        # arr[i] = arr[i].capitalize
+        # result = arr.join " "
         #make little words downcase until I figure out a better logic
-        if arr[i] == "The" or arr[i] == "And" or arr[i] == "A" or arr[i] == "An"
-            arr[i] = arr[i].downcase
+        if i == 0
+            arr[i] = arr[i].capitalize
+            result = arr.join " "
+        elsif littleWords.include? arr[i]
+            result = arr.join " "
+        else
+            arr[i] = arr[i].capitalize
             result = arr.join " "
         end
         i += 1
